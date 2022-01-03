@@ -10,8 +10,8 @@ using SubParSandwiches.Repositories;
 namespace SubParSandwiches.Repositories.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220102211345_initial")]
-    partial class initial
+    [Migration("20220103213032_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -333,10 +333,8 @@ namespace SubParSandwiches.Repositories.Migrations
 
             modelBuilder.Entity("SubParSandwiches.Entities.PaymentDetails", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("CartId")
                         .HasColumnType("uniqueidentifier");

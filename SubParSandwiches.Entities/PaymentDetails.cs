@@ -4,7 +4,7 @@ namespace SubParSandwiches.Entities
 {
     public class PaymentDetails
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string TransactionId { get; set; }
 

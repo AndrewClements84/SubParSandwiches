@@ -16,7 +16,7 @@ namespace SubParSandwiches.WebUI.Controllers
     {
         private readonly IOptions<RazorPayConfig> _razorPayConfig;
         private readonly IPaymentService _paymentService;
-        //private readonly IOrderService _orderService;
+        private readonly IOrderService _orderService;
         public IUserAccessor _userAccessor { get; set; }
         public PaymentController(IOptions<RazorPayConfig> razorPayConfig, IPaymentService paymentService,
             IUserAccessor userAccessor) : base(userAccessor)
@@ -45,6 +45,8 @@ namespace SubParSandwiches.WebUI.Controllers
             payment.Description = items;
             payment.RazorpayKey = _razorPayConfig.Value.Key;
             payment.Receipt = Guid.NewGuid().ToString();
+
+
             payment.OrderId = _paymentService.CreateOrder(payment.GrandTotal * 100, payment.Currency, payment.Receipt);
 
             return View(payment);
@@ -68,7 +70,37 @@ namespace SubParSandwiches.WebUI.Controllers
 
                     if (IsSignVerified && payment != null)
                     {
+                        CartModel cart = TempData.Get<CartModel>("Cart");
+                        PaymentDetails model = new PaymentDetails();
 
+                        model.CartId = cart.Id;
+                        model.Total = cart.Total;
+                        model.Tax = cart.Tax;
+                        model.GrandTotal = cart.GrandTotal;
+
+                        model.Status = payment.Attributes["status"]; //captured
+                        model.TransactionId = transactionId;
+                        model.Currency = payment.Attributes["currency"];
+                        model.Email = payment.Attributes["email"];
+                        model.Id = paymentId;
+                        model.UserId = CurrentUser.Id;
+
+                        int status = _paymentService.SavePaymentDetails(model);
+                        if (status > 0)
+                        {
+                            Response.Cookies.Append("CId", ""); //resettingg cartId in cookie
+
+                            Address address = TempData.Get<Address>("Address");
+                            //_orderService.PlaceOrder(CurrentUser.Id, orderId, paymentId, cart, address);
+
+                            //TO DO: Send email
+                            TempData.Set("PaymentDetails", model);
+                            return RedirectToAction("Receipt");
+                        }
+                        else
+                        {
+                            ViewBag.Message = "Although, due to some technical issues it's not get updated in our side. We will contact you soon..";
+                        }
                     }
                 }
             }

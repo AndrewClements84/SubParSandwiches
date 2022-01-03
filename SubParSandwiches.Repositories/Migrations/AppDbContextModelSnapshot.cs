@@ -331,10 +331,8 @@ namespace SubParSandwiches.Repositories.Migrations
 
             modelBuilder.Entity("SubParSandwiches.Entities.PaymentDetails", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("CartId")
                         .HasColumnType("uniqueidentifier");
