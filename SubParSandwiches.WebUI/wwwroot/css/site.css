@@ -36,11 +36,17 @@ a {
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #008938;
+    border-color: #fff;
 }
 
 .btn-success {
+    color: #fff;
+    background-color: #008938;
+    border-color: #fff;
+}
+
+.btn-success:hover {
     color: #008938;
     background-color: #fff;
     border-color: #008938;
