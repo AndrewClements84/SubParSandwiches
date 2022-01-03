@@ -14,4 +14,8 @@
     <ProjectReference Include="..\SubParSandwiches.Services\SubParSandwiches.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\" />
+  </ItemGroup>
+
 </Project>
