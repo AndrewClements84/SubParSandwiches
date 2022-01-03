@@ -40,6 +40,12 @@ a {
     border-color: #1861ac;
 }
 
+.btn-success {
+    color: #008938;
+    background-color: #fff;
+    border-color: #008938;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
     background-color: #1b6ec2;
@@ -70,6 +76,10 @@ html {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+.text-green {
+    color: #008938;
+}
+
 button.accept-policy {
     font-size: 1rem;
     line-height: inherit;
@@ -91,7 +101,7 @@ footer {
     width: 100%;
     padding: 25px 0;
     color: #e6e4e4;
-    background: #006491;
+    background: #008938;
 }
 
     footer a, footer a:visited {
