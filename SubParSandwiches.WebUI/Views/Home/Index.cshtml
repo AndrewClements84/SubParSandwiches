@@ -1,8 +1,29 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_PublicLayout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div style="background: #1a5ca3;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 text-white" style="width:100%">
+                <div class="pt-5 pb-5">
+                    <h1>SUBPAR</h1>
+                    <p class="pb-4">
+                        Overpriced sandwiches created by Artists
+                    </p>
+                    <p>
+                        <a href="#heading" class="btn btn-success">Order Online Now</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4 pt-4">
+                <img src="~/images/pizza-header.png" class="img-fluid" />
+            </div>
+        </div>
+    </div>
 </div>
+
+@await Component.InvokeAsync("Menu");
+
+
