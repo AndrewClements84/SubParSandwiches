@@ -16,6 +16,7 @@ namespace SubParSandwiches.WebUI.Configuration
             services.AddTransient<ICatalogService, CatalogService>();
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IFileHelper, FileHelper>();
+            services.AddTransient<IOrderService, OrderService>();
         }
     }
 }

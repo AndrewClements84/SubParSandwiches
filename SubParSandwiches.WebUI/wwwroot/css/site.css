@@ -124,3 +124,36 @@ footer {
         bottom: 0;
     }
 }
+
+/* pagination */
+.pagination > li.disabled {
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+
+.pagination > li {
+    margin: 0 4px;
+    display: inline-block;
+}
+
+.pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    color: #fff;
+    background-color: #f54b5b;
+    border-color: #fff;
+    cursor: default;
+}
+
+.pagination > li > a, .pagination > li > span {
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    font-size: 18px;
+    z-index: 1;
+    position: relative;
+    background-color: #2196f3;
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    display: inline-block;
+}
