@@ -22,11 +22,13 @@ namespace SubParSandwiches.Services.Configuration
                 .AddDefaultTokenProviders();
             services.AddScoped<DbContext, AppDbContext>();
 
+            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<ICartRepository, CartRepository>();
             services.AddTransient<IRepository<Item>, Repository<Item>>();
             services.AddTransient<IRepository<Category>, Repository<Category>>();
             services.AddTransient<IRepository<ItemType>, Repository<ItemType>>();
             services.AddTransient<IRepository<CartItem>, Repository<CartItem>>();
+            services.AddTransient<IRepository<OrderItem>, Repository<OrderItem>>();
             services.AddTransient<IRepository<PaymentDetails>, Repository<PaymentDetails>>();
         }
     }
