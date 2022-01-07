@@ -19,10 +19,11 @@ namespace SubParSandwiches.WebUI.Controllers
         private readonly IOrderService _orderService;
         public IUserAccessor _userAccessor { get; set; }
         public PaymentController(IOptions<RazorPayConfig> razorPayConfig, IPaymentService paymentService,
-            IUserAccessor userAccessor) : base(userAccessor)
+            IUserAccessor userAccessor, IOrderService orderService) : base(userAccessor)
         {
             _razorPayConfig = razorPayConfig;
             _paymentService = paymentService;
+            _orderService = orderService;
         }
 
         public IActionResult Index()
@@ -91,7 +92,7 @@ namespace SubParSandwiches.WebUI.Controllers
                             Response.Cookies.Append("CId", ""); //resettingg cartId in cookie
 
                             Address address = TempData.Get<Address>("Address");
-                            //_orderService.PlaceOrder(CurrentUser.Id, orderId, paymentId, cart, address);
+                            _orderService.PlaceOrder(CurrentUser.Id, orderId, paymentId, cart, address);
 
                             //TO DO: Send email
                             TempData.Set("PaymentDetails", model);
